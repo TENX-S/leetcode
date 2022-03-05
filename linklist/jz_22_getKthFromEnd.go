@@ -1,4 +1,4 @@
-package main
+package linklist
 
 func getKthFromEnd(head *ListNode, k int) *ListNode {
 	fast, slow := head, head

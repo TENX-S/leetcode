@@ -1,4 +1,4 @@
-package main
+package linklist
 
 func getDecimalValue(head *ListNode) (ans int) {
 	for head != nil {

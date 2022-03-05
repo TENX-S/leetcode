@@ -1,4 +1,4 @@
-package main
+package linklist
 
 func deleteNodes(head *ListNode, m int, n int) *ListNode {
 	p := head

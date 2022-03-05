@@ -1,4 +1,4 @@
-package main
+package linklist
 
 func getIntersectionNode(headA, headB *ListNode) *ListNode {
 	if headA == nil || headB == nil {

@@ -1,4 +1,4 @@
-package main
+package linklist
 
 
 // T: O(m+n)

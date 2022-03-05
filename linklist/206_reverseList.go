@@ -1,4 +1,4 @@
-package main
+package linklist
 
 func reverseList(head *ListNode) *ListNode {
 	var prev *ListNode

@@ -1,4 +1,4 @@
-package main
+package linklist
 
 // T: O(n)
 // S: O(1)

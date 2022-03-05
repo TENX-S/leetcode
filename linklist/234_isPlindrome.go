@@ -1,4 +1,4 @@
-package main
+package linklist
 
 func isPalindrome(head *ListNode) bool {
 	if head == nil {
