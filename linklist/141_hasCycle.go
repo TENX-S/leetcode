@@ -22,7 +22,7 @@ func hasCycle(head *ListNode) bool {
 }
 
 // 推荐写这个，假如面到了这个题目
-func hasCycle1(head *ListNode) bool {
+func hasCycle2(head *ListNode) bool {
 	slow, fast := head, head
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next
@@ -37,7 +37,7 @@ func hasCycle1(head *ListNode) bool {
 // 使用哈希表
 // T: O(n)
 // S: O(n)
-func hasCycle2(head *ListNode) bool {
+func hasCycle3(head *ListNode) bool {
 	seen := map[*ListNode]struct{}{}
 	for head != nil {
 		if _, ok := seen[head]; ok {
