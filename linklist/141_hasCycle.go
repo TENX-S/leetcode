@@ -9,7 +9,7 @@ func hasCycle(head *ListNode) bool {
 	}
 
 	slow, fast := head, head.Next // 注意fast的起始位置
-	
+
 	for fast != slow {
 		if fast == nil || fast.Next == nil {
 			return false
@@ -26,7 +26,7 @@ func hasCycle2(head *ListNode) bool {
 	slow, fast := head, head
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next
-		fast = fast.Next
+		fast = fast.Next.Next
 		if slow == fast {
 			return true
 		}
@@ -49,4 +49,3 @@ func hasCycle3(head *ListNode) bool {
 
 	return false
 }
-

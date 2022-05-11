@@ -5,11 +5,11 @@ import (
 )
 
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
-// 获取链表长度
+// GetLength 获取链表长度
 func (head *ListNode) GetLength() int {
 	p := head
 	var length int
@@ -21,17 +21,18 @@ func (head *ListNode) GetLength() int {
 	return length
 }
 
-// 遍历打印链表
+// PrintList 遍历打印链表
 func (head *ListNode) PrintList() {
 	p := head
 
-	for p != nil {
-		fmt.Printf("%d\t", p.Val)
+	for p.Next != nil {
+		fmt.Printf("%d -> ", p.Val)
 		p = p.Next
 	}
+	fmt.Println(p.Val)
 }
 
-// 打印某个节点
+// PrintNode 打印某个节点
 func (head *ListNode) PrintNode() {
 	if head != nil {
 		fmt.Printf("Nil node")
@@ -40,7 +41,7 @@ func (head *ListNode) PrintNode() {
 	}
 }
 
-// 删除指定位置的节点
+// Delete 删除指定位置的节点
 func (head *ListNode) Delete(index int) (success bool) {
 	if index < 0 || index > head.GetLength() {
 		fmt.Println("Invalid index!")
@@ -55,7 +56,7 @@ func (head *ListNode) Delete(index int) (success bool) {
 	return
 }
 
-// 在指定位置后插入数据
+// Insert 在指定位置后插入数据
 func (head *ListNode) Insert(index int, data int) (success bool) {
 	if index < 0 || index > head.GetLength() {
 		fmt.Println("Invalid data")
@@ -73,3 +74,16 @@ func (head *ListNode) Insert(index int, data int) (success bool) {
 	return
 }
 
+func NewFromList(arr []int) *ListNode {
+	dummyHead := &ListNode{Next: nil}
+	p := dummyHead
+	for _, i := range arr {
+		node := ListNode{
+			Val:  i,
+			Next: nil,
+		}
+		p.Next = &node
+		p = p.Next
+	}
+	return dummyHead.Next
+}

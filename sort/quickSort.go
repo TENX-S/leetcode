@@ -1,36 +1,32 @@
-package sort;
+package csort
 
-func quickSort(arr []int) {
-    if len(arr) == 0 {
-        return;
-    }
+func QuickSort(arr []int) {
+    quickSort(arr, 0, len(arr)-1)
 }
 
-func parSort(arr []int, l int, r int) {
-    if l >= r {
-        return;
-    }
-    m := partition(arr, l, r);
-    parSort(arr, l, m - 1)
-    parSort(arr, m + 1, r)
-}
+func quickSort(arr []int, start, end int) {
+    if start < end {
+        i, j := start, end
+        key := arr[(start+end)/2]
+        for i <= j {
+            for arr[i] < key {
+                i++
+            }
+            for arr[j] > key {
+                j--
+            }
+            if i <= j {
+                arr[i], arr[j] = arr[j], arr[i]
+                i++
+                j--
+            }
+        }
 
-func partition(arr []int, l int, r int) int {
-    j := l;
-    target := arr[l];
-    for i := l+1; i <= r; i++ {
-        if arr[i] <= target {
-            swap(arr[j+1], arr[i])
-            j++
+        if start < j {
+            quickSort(arr, start, j)
+        }
+        if end > i {
+            quickSort(arr, i, end)
         }
     }
-    swap(arr[j], arr[l])
-    return j;
 }
-
-func swap(x int, y int) {
-    t := y
-    y = x
-    x = t
-}
-

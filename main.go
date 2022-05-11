@@ -1,20 +1,11 @@
 package main
 
-func isUnique(astr string) bool {
-    for i := 0; i < len(astr); i++ {
-        for j := 0; j < len(astr); j++ {
-            if j == i {
-                continue
-            }
-            if astr[i] == astr[j] {
-                return true
-            }
-        }
-    }
-
-    return true
-}
+import (
+	"linklist"
+)
 
 func main() {
-    _ = isUnique("leetcode")
+	head := linklist.NewFromList([]int{1, 2, 3, 4, 5})
+	head.PrintList()
+	linklist.ReorderList(head)
 }
