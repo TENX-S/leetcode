@@ -18,7 +18,7 @@ const (
 	Postorder
 )
 
-func createBinaryTree(arr string) *TreeNode {
+func CreateBinaryTree(arr string) *TreeNode {
 	arr = strings.TrimPrefix(arr, "[")
 	arr = strings.TrimSuffix(arr, "]")
 	strTree := strings.Split(arr, ",")
