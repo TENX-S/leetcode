@@ -1,4 +1,4 @@
-package c297
+package C297
 
 import "testing"
 

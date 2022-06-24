@@ -1,7 +1,11 @@
 package Daily
 
-import "fmt"
+import (
+	"fmt"
+	. "github.com/TENX-S/findwork/BinaryTree"
+)
 
+// 解法 1 两次DFS
 func findFrequentTreeSum(root *TreeNode) []int {
 	var m = make(map[int]int)
 	var dfs func(*TreeNode)
@@ -18,16 +22,17 @@ func findFrequentTreeSum(root *TreeNode) []int {
 	fmt.Println(m)
 
 	var max int
-	for k := range m {
-		if k > max {
-			max = k
+	for _, v := range m {
+		if v > max {
+			max = v
 		}
 	}
+	fmt.Println(max)
 
 	var ans []int
 	for k, v := range m {
-		if k == max {
-			ans = append(ans, v)
+		if v == max {
+			ans = append(ans, k)
 		}
 	}
 
@@ -47,4 +52,38 @@ func sumOfRoot(root *TreeNode) int {
 	}
 	dfs(root)
 	return res
+}
+
+// 解法 2 一次后序遍历
+
+func findFrequentTreeSum2(root *TreeNode) []int {
+	m := make(map[int]int)
+	var dfs func(*TreeNode) int
+	dfs = func(node *TreeNode) int {
+		if node == nil {
+			return 0
+		}
+		leftSum := dfs(node.Left)
+		rightSum := dfs(node.Right)
+		rootSum := leftSum + rightSum + node.Val
+		m[rootSum]++
+		return rootSum
+	}
+	dfs(root)
+
+	var max int
+	for _, v := range m {
+		if v > max {
+			max = v
+		}
+	}
+
+	var ans []int
+	for k, v := range m {
+		if v == max {
+			ans = append(ans, k)
+		}
+	}
+
+	return ans
 }

@@ -1,10 +1,6 @@
 package Daily
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+import . "github.com/TENX-S/findwork/BinaryTree"
 
 func sumRootToLeaf(root *TreeNode) int {
 	return dfs(root, 0)
